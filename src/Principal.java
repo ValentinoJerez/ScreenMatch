@@ -4,7 +4,7 @@ public class Principal {
     public static void main(String[] args) {
         //Instancia de clase Pelicula
         Pelicula miPelicula = new Pelicula();
-        
+
         //Asigno valores a la instancia con Setters
         miPelicula.setNombre("Encanto");
         miPelicula.setFechaLanzamiento(2021);
@@ -20,16 +20,17 @@ public class Principal {
         miPelicula.evalua(9.5);
 
         //Imprimo
-        System.out.println("Media de evaluaciones de " + miPelicula.nombre + ": " + miPelicula.calculaMedia());
-        System.out.println("Total de evaluaciones de " + miPelicula.nombre + ": " + miPelicula.getTotalDeEvaluaciones()); 
+        System.out.println("Media de evaluaciones de " + miPelicula.getNombre() + ": " + miPelicula.calculaMedia());
+        System.out.println("Total de evaluaciones de " + miPelicula.getNombre() + ": " + miPelicula.getTotalDeEvaluaciones()); 
         System.out.println("------------------------------------");
 
         //Instancia de otra película
         Pelicula otraPelicula = new Pelicula();
-        otraPelicula.nombre = "Matrix";
-        otraPelicula.fechaLanzamiento = 1998;
-        otraPelicula.duracionMinutos = 180;
-        otraPelicula.incluidoEnPlan = false; 
+        otraPelicula.setNombre("Matrix");
+        otraPelicula.setFechaLanzamiento(1998);
+        otraPelicula.setDuracionMinutos(136);
+        otraPelicula.setIncluidoEnPlan(false);
+        otraPelicula.setDuracionMinutos(180);
 
         //Ficha tecnica
         otraPelicula.muestraFichaTecnica();
@@ -38,7 +39,7 @@ public class Principal {
         otraPelicula.evalua(9.0);
         otraPelicula.evalua(8.5);
 
-        System.out.println("Media de evaluaciones de " + otraPelicula.nombre + ": " + otraPelicula.calculaMedia());
-        System.out.println("Total de evaluaciones de " + otraPelicula.nombre + ": " + otraPelicula.getTotalDeEvaluaciones());
+        System.out.println("Media de evaluaciones de " + otraPelicula.getNombre() + ": " + otraPelicula.calculaMedia());
+        System.out.println("Total de evaluaciones de " + otraPelicula.getNombre() + ": " + otraPelicula.getTotalDeEvaluaciones());
     }
 }
