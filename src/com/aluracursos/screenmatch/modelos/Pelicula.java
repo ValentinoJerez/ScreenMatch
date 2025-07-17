@@ -13,6 +13,7 @@ public class Pelicula extends Titulo implements Clasificable { //Hereda de Titul
 
     @Override
     public int getClasificacion(){
-        return (int) (calculaMedia() / 2);
+        if (totalDeEvaluaciones == 0) return 0;
+        return (int) (calculaMedia() / 2); 
     }
 }

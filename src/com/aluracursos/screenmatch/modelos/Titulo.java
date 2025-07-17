@@ -8,8 +8,8 @@ public class Titulo {
     private int duracionMinutos;
     private boolean incluidoEnPlan;
     
-    private double sumaEvaluaciones; //Almacena suma de las notas
-    private int totalEvaluaciones;
+    protected  double sumaEvaluaciones; //Almacena suma de las notas
+    protected  int totalEvaluaciones;
 
     //Muestro ficha tecnica
     public void muestraFichaTecnica() { //void no retorna nada
