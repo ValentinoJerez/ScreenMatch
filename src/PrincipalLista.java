@@ -1,11 +1,11 @@
-import com.aluracursos.screenmatch.modelos.Pelicula;
-import com.aluracursos.screenmatch.modelos.Serie;
-import com.aluracursos.screenmatch.modelos.Episodio;
-
 import com.aluracursos.screenmatch.calculos.CalculadoraDeTiempo;
 import com.aluracursos.screenmatch.calculos.FiltroRecomendacion;
+import com.aluracursos.screenmatch.modelos.Episodio;
+import com.aluracursos.screenmatch.modelos.Pelicula;
+import com.aluracursos.screenmatch.modelos.Serie;
+import java.util.ArrayList;
 
-public class Principal {
+public class PrincipalLista {
     public static void main(String[] args) {
         //Instancia de clase Pelicula
         Pelicula miPelicula = new Pelicula();
@@ -25,6 +25,23 @@ public class Principal {
         System.out.println("Media de evaluaciones de " + miPelicula.getNombre() + ": " + miPelicula.calculaMedia());
         System.out.println("Total de evaluaciones de " + miPelicula.getNombre() + ": " + miPelicula.getTotalDeEvaluaciones()); 
         System.out.println("------------------------------------");
+
+        //Declaro otra pelicula con var
+        var otraPelicula = new Pelicula();
+        otraPelicula.setNombre("El Señor de los Anillos: La Comunidad del Anillo");
+        otraPelicula.setFechaLanzamiento(2001);
+        otraPelicula.setDuracionMinutos(178);
+
+        //Creo un array list de objetos Pelicula
+        ArrayList<Pelicula> listaDePeliculas = new ArrayList<>();
+
+        listaDePeliculas.add(miPelicula);
+        listaDePeliculas.add(otraPelicula);
+
+        //Imprimo lista
+        System.out.println("Tamaño de la lista de películas: " + listaDePeliculas.size());
+        System.out.println("La primera película de la lista es: " + listaDePeliculas.get(0).getNombre());
+        System.out.println("La segunda película de la lista es: " + listaDePeliculas.get(1).getNombre());
 
         //Serie
         Serie miSerie = new Serie();
