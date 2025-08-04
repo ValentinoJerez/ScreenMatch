@@ -1,7 +1,7 @@
 //SUPER CLASE
 package com.aluracursos.screenmatch.modelos;
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo>{
     //Atributos del objeto Pelicula
     private String nombre;
     private int fechaLanzamiento;
@@ -60,5 +60,16 @@ public class Titulo {
     }
     public void setIncluidoEnPlan(boolean incluidoEnPlan) {
         this.incluidoEnPlan = incluidoEnPlan;
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + nombre + " (" + fechaLanzamiento + ")";
+    }
+
+    @Override
+    public int compareTo(Titulo otroTitulo) {
+        // Compara por el nombre del título
+        return this.getNombre().compareTo(otroTitulo.getNombre());
     }
 }

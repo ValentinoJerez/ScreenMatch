@@ -8,11 +8,9 @@ import java.util.ArrayList;
 public class PrincipalLista {
     public static void main(String[] args) {
         //Instancia de clase Pelicula
-        Pelicula miPelicula = new Pelicula();
+        Pelicula miPelicula = new Pelicula("Encanto", 2021); //Uso constructor con nombre
 
         //Asigno valores a la instancia con Setters
-        miPelicula.setNombre("Encanto");
-        miPelicula.setFechaLanzamiento(2021);
         miPelicula.setDuracionMinutos(102);
         miPelicula.setIncluidoEnPlan(true);
 
@@ -27,9 +25,7 @@ public class PrincipalLista {
         System.out.println("------------------------------------");
 
         //Declaro otra pelicula con var
-        var otraPelicula = new Pelicula();
-        otraPelicula.setNombre("El Señor de los Anillos: La Comunidad del Anillo");
-        otraPelicula.setFechaLanzamiento(2001);
+        var otraPelicula = new Pelicula("El Señor de los Anillos: La Comunidad del Anillo", 2001);
         otraPelicula.setDuracionMinutos(178);
 
         //Creo un array list de objetos Pelicula
@@ -44,9 +40,7 @@ public class PrincipalLista {
         System.out.println("La segunda película de la lista es: " + listaDePeliculas.get(1).getNombre());
 
         //Serie
-        Serie miSerie = new Serie();
-        miSerie.setNombre("La Casa del Dragón");
-        miSerie.setFechaLanzamiento(2022);
+        Serie miSerie = new Serie("La Casa del Dragón", 2022);
         miSerie.setIncluidoEnPlan(true);
         miSerie.setTemporadas(1);
         miSerie.setEpisodiosPorTemporada(10);
