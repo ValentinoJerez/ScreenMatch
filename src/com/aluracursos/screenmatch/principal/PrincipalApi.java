@@ -6,11 +6,17 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Scanner;
 
 public class PrincipalApi {
     public static void main(String[] args) throws IOException, InterruptedException {
+        //Entrada de usuario
+        Scanner lectura = new Scanner(System.in);
+        System.out.println("Escriba el nombre de una película: ");
+        String busqueda = lectura.nextLine();
+
         // 1- Crear un cliente HTTP
-        String direccion = "https://www.omdbapi.com/?t=Matrix&apikey=6e683e9c";
+        String direccion = "https://www.omdbapi.com/?t=" + busqueda.replace(" ", "+") + "&apikey=6e683e9c";
 
         //2- Crear una solicitud HTTP
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(direccion)).build();
@@ -23,5 +29,7 @@ public class PrincipalApi {
 
         //5- Imprimir el cuerpo de la respuesta
         System.out.println(response.body());
+
+        lectura.close();
     }
 }
