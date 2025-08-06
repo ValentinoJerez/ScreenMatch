@@ -7,6 +7,11 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.aluracursos.screenmatch.modelos.Titulo;
+import com.aluracursos.screenmatch.modelos.TituloOMDB;
+import com.google.gson.FieldNamingPolicy;
 
 public class PrincipalApi {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -29,6 +34,14 @@ public class PrincipalApi {
 
         //5- Imprimir el cuerpo de la respuesta
         System.out.println(response.body());
+
+        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE_WITH_SPACES).create();
+
+        TituloOMDB miTituloOMDB = gson.fromJson(json, TituloOMDB.class);
+        System.out.println("DTO: " + miTituloOMDB);
+
+        Titulo miTitulo = new Titulo(miTituloOMDB);
+        System.out.println("Objeto final: " + miTitulo);
 
         lectura.close();
     }

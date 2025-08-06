@@ -1,7 +1,11 @@
 //SUPER CLASE
 package com.aluracursos.screenmatch.modelos;
 
+import com.google.gson.annotations.SerializedName;
+import java.util.Comparator;
+
 public class Titulo implements Comparable<Titulo>{
+
     //Atributos del objeto Pelicula
     private String nombre;
     private int fechaLanzamiento;
@@ -10,6 +14,20 @@ public class Titulo implements Comparable<Titulo>{
     
     protected  double sumaEvaluaciones; //Almacena suma de las notas
     protected  int totalEvaluaciones;
+
+    public Titulo(String nombre, int fechaLanzamiento) {
+        this.nombre = nombre;
+        this.fechaLanzamiento = fechaLanzamiento;
+    }
+
+    public Titulo(TituloOMDB miTituloOMDB) {
+        this.nombre = miTituloOMDB.title();
+        this.fechaLanzamiento = Integer.valueOf(miTituloOMDB.year());
+        
+        // Manejo provisional de la duración con substring
+        // Se abordará el manejo de errores en la siguiente clase
+        this.duracionMinutos = Integer.valueOf(miTituloOMDB.runtime().substring(0, 3));
+    }
 
     //Muestro ficha tecnica
     public void muestraFichaTecnica() { //void no retorna nada
