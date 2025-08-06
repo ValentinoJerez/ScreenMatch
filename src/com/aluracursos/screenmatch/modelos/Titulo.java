@@ -1,6 +1,7 @@
 //SUPER CLASE
 package com.aluracursos.screenmatch.modelos;
 
+import com.aluracursos.screenmatch.excepcion.ErrorEnConversionDeDuracionExcepcion;
 import com.google.gson.annotations.SerializedName;
 import java.util.Comparator;
 
@@ -22,11 +23,25 @@ public class Titulo implements Comparable<Titulo>{
 
     public Titulo(TituloOMDB miTituloOMDB) {
         this.nombre = miTituloOMDB.title();
-        this.fechaLanzamiento = Integer.valueOf(miTituloOMDB.year());
         
-        // Manejo provisional de la duración con substring
-        // Se abordará el manejo de errores en la siguiente clase
-        this.duracionMinutos = Integer.valueOf(miTituloOMDB.runtime().substring(0, 3));
+        // --- ¡NUEVO CÓDIGO AQUÍ: Validación y lanzamiento de excepción ! ---
+        if (miTituloOMDB.year() != null && !miTituloOMDB.year().isEmpty()) {
+            this.fechaLanzamiento = Integer.valueOf(miTituloOMDB.year());
+        } else {
+            this.fechaLanzamiento = 0; // O manejar de otra forma
+        }
+
+        if (miTituloOMDB.runtime() != null && !miTituloOMDB.runtime().isEmpty() && miTituloOMDB.runtime().contains("N/A")) {
+             throw new ErrorEnConversionDeDuracionExcepcion("No pude convertir la duración porque contiene 'N/A' o caracteres no numéricos.");
+        }
+        
+        // --- Mejoras en la conversión de duración ---
+        String duracionString = miTituloOMDB.runtime().replace(" ", "").replace("min", "");
+        if (!duracionString.isEmpty()) {
+            this.duracionMinutos = Integer.valueOf(duracionString);
+        } else {
+            this.duracionMinutos = 0;
+        }
     }
 
     //Muestro ficha tecnica
